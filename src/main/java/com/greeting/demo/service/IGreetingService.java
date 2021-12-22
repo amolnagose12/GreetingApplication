@@ -6,7 +6,6 @@ import com.greeting.demo.dto.UserDto;
 import com.greeting.demo.model.Greeting;
 
 
-
 public interface IGreetingService {
 
 	public String greetingMessageByName(UserDto userDto);
@@ -19,7 +18,7 @@ public interface IGreetingService {
 	/**
 	 * Method: Find Message by Id from Repository
 	 */
-	public Greeting findById(long parseLong);
+	public Greeting findById(long id);
 
 	/**
 	 * Method: List All Messages from Repository
@@ -27,8 +26,13 @@ public interface IGreetingService {
 	public List<Greeting> getAllMessages();
 
 	/**
-	 * Method: edit messages from repository
+	 * Method: edit message from repository
 	 */
 	public Greeting editMessage(Greeting greeting);
+
+	/**
+	 * Method: delete message from repository
+	 */
+	public Greeting deleteMessage(long id);
 
 }

@@ -1,6 +1,7 @@
 package com.greeting.demo.service;
 
 import java.util.List;
+import java.util.Optional;
 import java.util.concurrent.atomic.AtomicLong;
 
 import org.modelmapper.ModelMapper;
@@ -52,9 +53,25 @@ public class GreetingService implements IGreetingService {
 		return igreetingRepository.findAll();
 	}
 
+	/**
+	 * method call to edit messages from repository
+	 */
 	@Override
 	public Greeting editMessage(Greeting greeting) {
 		return igreetingRepository.save(new Greeting(1, "Hello Suraj"));
+	}
+
+	/**
+	 * Call method to delete message
+	 */
+	@Override
+	public Greeting deleteMessage(long id) {
+		Optional<Greeting> isPresent = igreetingRepository.findById(id);
+		if (isPresent.isPresent()) {
+			igreetingRepository.delete(isPresent.get());
+			return isPresent.get();
+		}
+		return null;
 	}
 
 }
