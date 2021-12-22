@@ -1,4 +1,5 @@
 package com.greeting.demo.service;
+
 import java.util.List;
 import java.util.concurrent.atomic.AtomicLong;
 
@@ -35,7 +36,9 @@ public class GreetingService implements IGreetingService {
 		return ("Hello " + user.getFirstName() + " " + user.getLastName());
 	}
 
-	
+	/**
+	 * method call to find message by Id From Repository
+	 */
 	@Override
 	public Greeting findById(long findId) {
 		return igreetingRepository.findById(findId).get();
@@ -47,6 +50,11 @@ public class GreetingService implements IGreetingService {
 	@Override
 	public List<Greeting> getAllMessages() {
 		return igreetingRepository.findAll();
+	}
+
+	@Override
+	public Greeting editMessage(Greeting greeting) {
+		return igreetingRepository.save(new Greeting(1, "Hello Suraj"));
 	}
 
 }

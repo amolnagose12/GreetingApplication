@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -76,7 +77,15 @@ public class GreetingController {
 	 * method call to list all the messages in repository
 	 */
 	@GetMapping("/service/listMessages")
-	public List<Greeting>getMessages(){
+	public List<Greeting> getMessages() {
 		return this.greetingService.getAllMessages();
+	}
+
+	/**
+	 * method call to edit messages from repository
+	 */
+	@PutMapping("/service/editMessage")
+	public Greeting editMessage(Greeting greeting) {
+		return this.greetingService.editMessage(greeting);
 	}
 }
