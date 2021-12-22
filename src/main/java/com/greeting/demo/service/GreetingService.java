@@ -1,4 +1,5 @@
 package com.greeting.demo.service;
+import java.util.List;
 import java.util.concurrent.atomic.AtomicLong;
 
 import org.modelmapper.ModelMapper;
@@ -38,6 +39,14 @@ public class GreetingService implements IGreetingService {
 	@Override
 	public Greeting findById(long findId) {
 		return igreetingRepository.findById(findId).get();
+	}
+
+	/**
+	 * method call to list all the messages in repository
+	 */
+	@Override
+	public List<Greeting> getAllMessages() {
+		return igreetingRepository.findAll();
 	}
 
 }

@@ -1,5 +1,6 @@
 package com.greeting.demo.controller;
 
+import java.util.List;
 import java.util.concurrent.atomic.AtomicLong;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -49,6 +50,9 @@ public class GreetingController {
 	@Autowired
 	private IGreetingService greetingService;
 
+	/**
+	 * method call to save messages in repository
+	 */
 	@GetMapping("/service")
 	public Greeting greeting() {
 		return greetingService.greetingMessage();
@@ -60,10 +64,19 @@ public class GreetingController {
 		return greetingService.greetingMessageByName(userDto);
 	}
 
-
+	/**
+	 * method call to find messages in repository
+	 */
 	@GetMapping("/service/{findId}")
 	public Greeting findById(@PathVariable String findId) {
 		return this.greetingService.findById(Long.parseLong(findId));
 	}
 
+	/**
+	 * method call to list all the messages in repository
+	 */
+	@GetMapping("/service/listMessages")
+	public List<Greeting>getMessages(){
+		return this.greetingService.getAllMessages();
+	}
 }
