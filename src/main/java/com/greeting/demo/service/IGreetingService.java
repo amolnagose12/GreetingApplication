@@ -11,4 +11,6 @@ public interface IGreetingService {
 
 	public String greetingMessageByName(UserDto userDto);
 
+	public Greeting findById(long parseLong);
+
 }

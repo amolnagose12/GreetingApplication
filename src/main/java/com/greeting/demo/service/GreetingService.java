@@ -34,4 +34,10 @@ public class GreetingService implements IGreetingService {
 		return ("Hello " + user.getFirstName() + " " + user.getLastName());
 	}
 
+	
+	@Override
+	public Greeting findById(long findId) {
+		return igreetingRepository.findById(findId).get();
+	}
+
 }
