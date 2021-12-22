@@ -28,9 +28,6 @@ public class GreetingController {
 	private static final String template = "Hello, %s!";
 	private final AtomicLong counter = new AtomicLong();
 
-	@Autowired
-	private IGreetingService greetingService;
-
 	/**
 	 * @GetMapping: mapping HTTP GET requests onto specific handler methods
 	 * @RequestParam: method parameter should be bound to a web request parameter.
@@ -49,16 +46,18 @@ public class GreetingController {
 		return new Greeting(counter.incrementAndGet(), String.format(template, name));
 	}
 
+	@Autowired
+	private IGreetingService greetingService;
+
 	@GetMapping("/service")
 	public Greeting greeting() {
 		return greetingService.greetingMessage();
 
 	}
-	
-    @PostMapping("/post")
-    public String greetingMessage(@RequestBody UserDto userDto) {
-        return greetingService.greetingMessageByName(userDto);
-    }
 
+	@PostMapping("/post")
+	public String greetingMessage(@RequestBody UserDto userDto) {
+		return greetingService.greetingMessageByName(userDto);
+	}
 
 }

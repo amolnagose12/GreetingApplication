@@ -1,20 +1,28 @@
 package com.greeting.demo.model;
 
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
+@Entity
+@Table(name = "GREETINGS")
 public class Greeting {
+	@Id
 	private long id;
 	private String message;
 
-	
-//	 parameterized constructor
-	
-	public Greeting(long id, String message) {
-		this.id = id;
-		this.message = message;
+	public Greeting() {
+		super();
+		id = 0;
+		message = "";
 	}
 
-	
-//	 generates setters and getters
-	
+	public Greeting(long id, String content) {
+		super();
+		this.id = id;
+		this.message = content;
+	}
+
 	public long getId() {
 		return id;
 	}
@@ -27,14 +35,8 @@ public class Greeting {
 		return message;
 	}
 
-	public void setMessage(String content) {
-		this.message = content;
-	}
-
-
-	@Override
-	public String toString() {
-		return "Greeting [id=" + id + ", message=" + message + "]";
+	public void setMessage(String message) {
+		this.message = message;
 	}
 
 }
